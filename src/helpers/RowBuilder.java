@@ -3,7 +3,8 @@ package helpers;
 import Enteties.Block;
 import environment.Game;
 
-import java.awt.*;
+import java.awt.Color;
+
 
 /**
  * The type Row builder.
@@ -14,6 +15,7 @@ public class RowBuilder {
     /**
      * Build.
      * Builds a row of blocks.
+     *
      * @param x      the x
      * @param y      the y
      * @param width  the width
@@ -22,18 +24,19 @@ public class RowBuilder {
      * @param color  the color
      * @param game   the game
      */
-    public static void Build(int x, int y, int width, int height, int number, Color color, Game game) {
+    public static void build(int x, int y, int width, int height, int number, Color color, Game game) {
         int space = 2;
+        int divSpace = space / 2;
         for (int i = 0; i < number; i++) {
             Block block;
-            if(i==0){
-                 block =new Block(new Rectangle(new Point(x + width*i+space/2 , y), width-space, height, color));
+            if (i == 0) {
+                block = new Block(new Rectangle(new Point(x  + divSpace, y), width - space, height, color));
 
-            }else{
-                 block =new Block(new Rectangle(new Point(x + width*i+space , y), width-space, height, color));
+            } else {
+                block = new Block(new Rectangle(new Point(x + width * i + space, y), width - space, height, color));
 
             }
-            block.setDxMulty(1);
+            block.setDxMultiplier(1);
             game.addSprite(block);
             game.addCollidable(block);
 

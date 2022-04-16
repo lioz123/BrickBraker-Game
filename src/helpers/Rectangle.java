@@ -1,29 +1,30 @@
 package helpers;
 
 import biuoop.DrawSurface;
-import helpers.Line;
-import helpers.Point;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type helpers.Rectangle.
+ *
+ * @author Lioz Dayan. ID:315155234. The type Enteties.Ball.
  */
 public class Rectangle {
     private helpers.Point upperLeft;
-    private double width, height;
+    private final double width;
+    private final double height;
     private Color color = null;
 
     /**
      * Instantiates a new helpers.Rectangle.
+     * Create a new rectangle with location and width/height.
      *
      * @param upperLeft the upper left
      * @param width     the width
      * @param height    the height
      */
-// Create a new rectangle with location and width/height.
     public Rectangle(helpers.Point upperLeft, double width, double height) {
         this.upperLeft = upperLeft;
         this.width = width;
@@ -33,12 +34,13 @@ public class Rectangle {
 
     /**
      * Instantiates a new helpers.Rectangle.
+     * Create a new rectangle with location and width/height.
      *
      * @param upperLeft the upper left
      * @param width     the width
      * @param height    the height
+     * @param color     the color.
      */
-// Create a new rectangle with location and width/height.
     public Rectangle(helpers.Point upperLeft, double width, double height, Color color) {
         this.upperLeft = upperLeft;
         this.width = width;
@@ -58,17 +60,24 @@ public class Rectangle {
         surface.setColor(color);
         surface.fillRectangle((int) upperLeft.getX(), (int) upperLeft.getY(), (int) width, (int) height);
     }
-    public void setUpperLeft(Point point){
-        this.upperLeft=point;
+
+    /**
+     * Sets upper left.
+     *
+     * @param point the point
+     */
+    public void setUpperLeft(Point point) {
+        this.upperLeft = point;
     }
+
     /**
      * Intersection points java . util . list.
+     * Return a (possibly empty) List of intersection points
+     * with the specified line.
      *
      * @param line the line
      * @return the java . util . list
      */
-// Return a (possibly empty) List of intersection points
-    // with the specified line.
     public java.util.List<helpers.Point> intersectionPoints(Line line) {
         double m = line.getIncline();
         List<helpers.Point> points = new ArrayList<>();
@@ -78,13 +87,11 @@ public class Rectangle {
             helpers.Point start = line.start();
             helpers.Point end = line.end();
             if (line.start().getX() > line.end().getX()) {
-                helpers.Point temp =start;
                 end = start;
-                start = temp;
                 space = -space;
             }
             Point current = line.start();
-            while (intersectWithPoint(current)&&current.getX()<=end.getX()) {
+            while (intersectWithPoint(current) && current.getX() <= end.getX()) {
                 points.add(current);
                 current = new helpers.Point(current.getX() + space, current.getX() * m + n);
             }

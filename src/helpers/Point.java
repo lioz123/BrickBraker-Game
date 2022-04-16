@@ -6,7 +6,8 @@ package helpers;
  * @author Lioz Dayan. ID:315155234. The type helpers.Point.
  */
 public class Point {
-    private double x, y;
+    private final double x;
+    private final double y;
 
     /**
      * Instantiates a new helpers.Point.

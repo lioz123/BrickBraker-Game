@@ -6,8 +6,8 @@ package helpers;
  * helpers.Velocity specifies the change in position on the `x` and the `y` axes.
  */
 public class Velocity {
-    private double dx;
-    private double dy;
+    private final double dx;
+    private final double dy;
 
     /**
      * Create a new Instance of helpers.Velocity from angle and speed.

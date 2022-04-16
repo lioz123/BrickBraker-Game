@@ -1,14 +1,15 @@
 package helpers;
 
-import helpers.Point;
 import interfaces.Collidable;
 
 /**
  * The type Collision info.
+ *
+ * @author Lioz Dayan. ID:315155234. The type Enteties.Ball.
  */
 public class CollisionInfo {
-    private Point point;
-    private Collidable object;
+    private final Point point;
+    private final Collidable object;
 
     /**
      * Instantiates a new Collision info.

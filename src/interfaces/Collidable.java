@@ -1,11 +1,14 @@
 package interfaces;
 
-import biuoop.DrawSurface;
-import helpers.*;
 
+import helpers.Point;
+import helpers.Rectangle;
+import helpers.Velocity;
 
 /**
  * The interface Interfaces.Collidable.
+ *
+ * @author Lioz Dayan. ID:315155234. The type Enteties.Ball.
  */
 public interface Collidable {
     /**

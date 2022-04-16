@@ -4,21 +4,24 @@ import helpers.CollisionInfo;
 import helpers.Line;
 import helpers.Point;
 import interfaces.Collidable;
-import biuoop.DrawSurface;
-import helpers.*;
-import interfaces.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type Game environment.
+ *
+ * @author Lioz Dayan. ID:315155234. The type Enteties.Ball.
  */
 public class GameEnvironment {
     private List<Collidable> collidables;
+
+    /**
+     * Instantiates a new Game environment.
+     */
     public GameEnvironment() {
         this.collidables = new ArrayList<>();
-
-           }
+    }
 
     /**
      * Add collidable.
@@ -41,7 +44,6 @@ public class GameEnvironment {
      * @param trajectory the trajectory
      * @return the collision info
      */
-
     public CollisionInfo getClosestCollision(Line trajectory) {
         boolean collided = false;
         Collidable closestObject = null;
@@ -57,7 +59,9 @@ public class GameEnvironment {
                 if (neoPoint == null) {
                     continue;
                 }
-                if (neoPoint.distance(trajectory.end()) < closestPoint.distance(trajectory.end())) {
+
+                if (closestPoint != null
+                        && neoPoint.distance(trajectory.end()) < closestPoint.distance(trajectory.start())) {
                     closestObject = collidable;
                     closestPoint = neoPoint;
                 }
@@ -66,7 +70,6 @@ public class GameEnvironment {
         if (closestObject == null) {
             return null;
         }
-        System.out.println(closestObject.toString());
         return new CollisionInfo(closestPoint, closestObject);
     }
 

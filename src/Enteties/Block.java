@@ -1,37 +1,66 @@
 package Enteties;
 
 import biuoop.DrawSurface;
-import helpers.*;
-import interfaces.*;
+import helpers.Point;
+import helpers.Rectangle;
+import helpers.Velocity;
+import interfaces.Collidable;
+import interfaces.Sprite;
+
 
 /**
  * The type Enteties.Block.
+ *
+ * @author Lioz Dayan. ID:315155234. The type Enteties.Ball.
  */
-public class Block implements Collidable,Sprite {
-    double epsilon = 10.0/((double) (10^12));
-    private Rectangle rectangle;
-    int dxMulty = -1;
-    int dyMulty = -1;
-    boolean protectionX = false;
-    boolean protectionY = false;
-    public void setDxMulty(int dxMulty) {
-        this.dxMulty = dxMulty;
+public class Block implements Collidable, Sprite {
+    private  Rectangle rectangle;
+    private   int dxMultiplier = -1;
+    private  int dyMultiplier = -1;
+
+    /**
+     * Sets dx multiplier.
+     *
+     * @param dxMultiplier the dx multiplier
+     */
+    public void setDxMultiplier(int dxMultiplier) {
+        this.dxMultiplier = dxMultiplier;
     }
 
-    public void setDyMulty(int dyMulty) {
-        this.dyMulty = dyMulty;
+    /**
+     * Sets dy multiplier.
+     *
+     * @param dyMultiplier the dy multiplier
+     */
+    public void setDyMultiplier(int dyMultiplier) {
+        this.dyMultiplier = dyMultiplier;
     }
 
 
-    public int getDxMulty() {
-        return dxMulty;
+    /**
+     * Gets dx multiplier.
+     *
+     * @return the dx multiplier
+     */
+    public int getDxMultiplier() {
+        return dxMultiplier;
     }
 
-    public int getDyMulty() {
-        return dyMulty;
+    /**
+     * Gets dy multiplierplayer.
+     *
+     * @return the dy multiplier
+     */
+    public int getDyMultiplier() {
+        return dyMultiplier;
     }
 
 
+    /**
+     * Instantiates a new Block.
+     *
+     * @param rectangle the rectangle
+     */
     public Block(Rectangle rectangle) {
         this.rectangle = rectangle;
     }
@@ -41,15 +70,11 @@ public class Block implements Collidable,Sprite {
         return rectangle;
     }
 
+
     @Override
     public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
-       // if(protectionY&&collisionPoint.getY()-rectangle.getUpperLeft().getY())
-        return new Velocity(currentVelocity.getDx()* dxMulty,currentVelocity.getDy()* dyMulty);
+        return new Velocity(currentVelocity.getDx() * dxMultiplier, currentVelocity.getDy() * dyMultiplier);
     }
-
-
-
-
 
 
     @Override

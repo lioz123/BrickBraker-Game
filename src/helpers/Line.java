@@ -71,10 +71,9 @@ public class Line {
 
     /**
      * End point.
-     *
+     * Returns the end point of the line
      * @return the point
      */
-// Returns the end point of the line
     public Point end() {
         return end;
     }

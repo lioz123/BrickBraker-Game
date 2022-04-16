@@ -2,9 +2,22 @@ package interfaces;
 
 import biuoop.DrawSurface;
 
+/**
+ * The interface Sprite.
+ *
+ * @author Lioz Dayan. ID:315155234. The type Enteties.Ball.
+ */
 public interface Sprite {
-    // draw the sprite to the screen
+    /**
+     * Draw on.
+     * draw the sprite to the screen.
+     * @param d the d
+     */
     void drawOn(DrawSurface d);
-    // notify the sprite that time has passed
+
+    /**
+     * Time passed.
+     * notify the sprite that time has passed.
+     */
     void timePassed();
 }

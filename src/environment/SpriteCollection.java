@@ -8,13 +8,15 @@ import java.util.List;
 
 /**
  * The type Sprite collection.
+ *
+ * @author Lioz Dayan. ID:315155234. The type Enteties.Ball.
  */
 public class SpriteCollection {
-    private List<Sprite> sprites = new ArrayList<>();
+    private final List<Sprite> sprites = new ArrayList<>();
 
     /**
      * Add sprite.
-     *
+     *a
      * @param s the s
      */
     public void addSprite(Sprite s) {
