@@ -1,7 +1,11 @@
+package screens;
+
+import Enteties.Ball;
 import biuoop.GUI;
 import biuoop.DrawSurface;
 import biuoop.Sleeper;
-
+import helpers.*;
+import interfaces.*;
 /**
  * The type Multiple bouncing balls animation.
  *
@@ -34,8 +38,8 @@ public class MultipleBouncingBallsAnimation {
 //     * @param windowHeight the window height
 //     * @return the ball [ ]
 //     */
-//    static Ball[] generateBalls(String[] sizeList, Frame frame, int windowWidth, int windowHeight) {
-//        Ball[] balls = new Ball[sizeList.length];
+//    static Enteties.Ball[] generateBalls(String[] sizeList, helpers.Frame frame, int windowWidth, int windowHeight) {
+//        Enteties.Ball[] balls = new Enteties.Ball[sizeList.length];
 //        Random rnd = new Random();
 //        for (int i = 0; i < sizeList.length; i++) {
 //            int size = Integer.parseInt(sizeList[i]);
@@ -49,8 +53,8 @@ public class MultipleBouncingBallsAnimation {
 //            } else {
 //                speed -= size / 5;
 //            }
-//            Velocity v = Velocity.fromAngleAndSpeed(angle, speed);
-//            Ball ball = new Ball(new Point(x, y), size, Color.blue, frame);
+//            helpers.Velocity v = helpers.Velocity.fromAngleAndSpeed(angle, speed);
+//            Enteties.Ball ball = new Enteties.Ball(new helpers.Point(x, y), size, Color.blue, frame);
 //            ball.setVelocity(v);
 //            balls[i] = ball;
 //        }

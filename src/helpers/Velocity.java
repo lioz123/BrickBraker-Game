@@ -1,14 +1,16 @@
+package helpers;
+
 /**
  * @author Lioz Dayan. ID:315155234.
- * The type Velocity.
- * Velocity specifies the change in position on the `x` and the `y` axes.
+ * The type helpers.Velocity.
+ * helpers.Velocity specifies the change in position on the `x` and the `y` axes.
  */
 public class Velocity {
     private double dx;
     private double dy;
 
     /**
-     * Create a new Instance of Velocity from angle and speed.
+     * Create a new Instance of helpers.Velocity from angle and speed.
      *
      * @param angle the angle
      * @param speed the speed
@@ -19,9 +21,8 @@ public class Velocity {
         double dy = -speed * Math.sin(angle);
         return new Velocity(dx, dy);
     }
-
     /**
-     * Instantiates a new Velocity.
+     * Instantiates a new helpers.Velocity.
      *
      * @param dx the dx
      * @param dy the dy
@@ -60,5 +61,13 @@ public class Velocity {
      */
     public double getDy() {
         return dy;
+    }
+
+    public double getAngle() {
+        return Math.atan(getDx()/getDy());
+    }
+
+    public double getSpeed(){
+        return Math.sqrt(Math.pow(dx,2)  + Math.pow(dy,2));
     }
 }

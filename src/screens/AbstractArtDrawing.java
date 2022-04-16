@@ -1,5 +1,10 @@
+package screens;
+
 import biuoop.DrawSurface;
 import biuoop.GUI;
+import helpers.Line;
+import helpers.Point;
+
 import java.awt.Color;
 import java.util.Random;
 

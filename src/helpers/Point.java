@@ -1,13 +1,15 @@
+package helpers;
+
 /**
- * The type Point.
+ * The type helpers.Point.
  *
- * @author Lioz Dayan. ID:315155234. The type Point.
+ * @author Lioz Dayan. ID:315155234. The type helpers.Point.
  */
 public class Point {
     private double x, y;
 
     /**
-     * Instantiates a new Point.
+     * Instantiates a new helpers.Point.
      *
      * @param x the x.
      * @param y the y.

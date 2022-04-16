@@ -1,16 +1,18 @@
+package helpers;
+
 import java.util.List;
 
 /**
- * The type Line.
+ * The type helpers.Line.
  *
- * @author Lioz Dayan. ID:315155234. The type Line.
+ * @author Lioz Dayan. ID:315155234. The type helpers.Line.
  */
 public class Line {
     private final Point start;
     private final Point end;
 
     /**
-     * Instantiates a new Line.
+     * Instantiates a new helpers.Line.
      *
      * @param start the start
      * @param end   the end
@@ -22,7 +24,7 @@ public class Line {
     }
 
     /**
-     * Instantiates a new Line.
+     * Instantiates a new helpers.Line.
      *
      * @param x1 the x 1
      * @param y1 the y 1

@@ -1,11 +1,14 @@
+package helpers;
+
+import Enteties.Ball;
 import biuoop.DrawSurface;
 
 import java.awt.Color;
 
 /**
- * The type Frame.
+ * The type helpers.Frame.
  *
- * @author Lioz Dayan. ID:315155234. The type Frame. Responsible for holding balls with the frame's bounderies.
+ * @author Lioz Dayan. ID:315155234. The type helpers.Frame. Responsible for holding balls with the frame's bounderies.
  */
 public class Frame {
     private final int x;
@@ -78,7 +81,7 @@ public class Frame {
     }
 
     /**
-     * Instantiates a new Frame.
+     * Instantiates a new helpers.Frame.
      *
      * @param x      the x
      * @param y      the y

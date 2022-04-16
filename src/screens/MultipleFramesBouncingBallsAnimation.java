@@ -1,7 +1,12 @@
+package screens;
+
+import Enteties.Ball;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
-
+import helpers.Point;
+import helpers.*;
+import interfaces.*;
 import java.awt.Color;
 
 /**
