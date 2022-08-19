@@ -4,7 +4,6 @@ import helpers.CollisionInfo;
 import helpers.Line;
 import helpers.Point;
 import interfaces.Collidable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +33,8 @@ public class GameEnvironment {
     }
 
 
+
+
     /**
      * Get closest collision collision info.
      * Assume an object moving from line.start() to line.end().
@@ -48,6 +49,7 @@ public class GameEnvironment {
         boolean collided = false;
         Collidable closestObject = null;
         Point closestPoint = null;
+        ArrayList<Collidable> collidables = new ArrayList<>(this.collidables);
         for (Collidable collidable : collidables) {
             List<Point> collisionPoints = collidable.getCollisionRectangle().intersectionPoints(trajectory);
             if (!collided && collisionPoints != null && !collisionPoints.isEmpty()) {
@@ -74,4 +76,12 @@ public class GameEnvironment {
     }
 
 
+    /**
+     * Remove collidable.
+     *
+     * @param c the collidable to remove.
+     */
+    public void removeCollidable(Collidable c) {
+        collidables.remove(c);
+    }
 }

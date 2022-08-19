@@ -1,14 +1,12 @@
-package Enteties;
+package entities;
 
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
-import environment.Game;
+import environment.GameLevel;
 import environment.GameEnvironment;
-import helpers.CollisionInfo;
 import helpers.Velocity;
 import helpers.Point;
 import helpers.Rectangle;
-import helpers.Line;
 import interfaces.Collidable;
 import interfaces.Sprite;
 
@@ -109,38 +107,10 @@ public class Paddle implements Sprite, Collidable {
      */
     public void moveLeft() {
         currentVelocity = new Velocity(-speed, 0);
-        if (gameEnvironment != null) {
-            Point start = currentVelocity.applyToPoint(new Point(rectangle.getUpperLeft().getX() ,
-                    rectangle.getUpperLeft().getY()));
-            Line line = new Line(start, rectangle.getUpperLeft());
-            CollisionInfo info = gameEnvironment.getClosestCollision(line);
-            boolean collided = false;
-            int counter = 0;
-            if(info!=null){
-                System.out.println("first colission" +info.collisionPoint());
-
-            }
-
-            while (info != null && !(info.collisionObject() instanceof Ball)) {
-                counter++;
-                collided=true;
-                currentVelocity = new Velocity(0, 0);
-                rectangle.setUpperLeft(new Point(info.collisionPoint().getX() + 1, rectangle.getUpperLeft().getY()));
-                System.out.println("collision left");
-                 start = currentVelocity.applyToPoint(new Point(rectangle.getUpperLeft().getX() ,
-                        rectangle.getUpperLeft().getY()));
-                line = new Line(start,start);
-                info = gameEnvironment.getClosestCollision(line);
-                if(info!=null){
-                    System.out.println("second colission" +info.collisionPoint());
-
-                }
-            }
-            System.out.println("collision counter: " + counter);
-            if(collided){
-                return;
-
-            }
+        Point collideWithEdge = collideWithBorder();
+        if (collideWithEdge != null) {
+            rectangle.setUpperLeft(collideWithEdge);
+            return;
         }
         rectangle.setUpperLeft(currentVelocity.applyToPoint(rectangle.getUpperLeft()));
 
@@ -151,26 +121,27 @@ public class Paddle implements Sprite, Collidable {
      */
     public void moveRight() {
         currentVelocity = new Velocity(speed, 0);
-        if (gameEnvironment != null) {
-            Point start = new Point(rectangle.getUpperLeft().getX() + rectangle.getWidth(),
-                    rectangle.getUpperLeft().getY());
-            Point end = currentVelocity.applyToPoint(start);
-            Line line = new Line(start, end);
-            System.out.println("upperleft: " + rectangle.getUpperLeft().toString() + "  start" + start.toString() + " end: " + end.toString());
-
-            CollisionInfo info = gameEnvironment.getClosestCollision(line);
-            if (info != null && !(info.collisionObject() instanceof Ball) && !(info.collisionObject() instanceof Paddle)) {
-                currentVelocity = new Velocity(0, 0);
-                System.out.println("collision right");
-                rectangle.setUpperLeft(new Point(info.collisionPoint().getX() - 1 - rectangle.getWidth(),
-                        rectangle.getUpperLeft().getY()));
-                System.out.println("collisionPoint: " + info.collisionPoint().toString());
-
-                return;
-            }
+        Point collideWithEdge = collideWithBorder();
+        if (collideWithEdge != null) {
+            rectangle.setUpperLeft(collideWithEdge);
+            return;
         }
-
         rectangle.setUpperLeft(currentVelocity.applyToPoint(rectangle.getUpperLeft()));
+    }
+
+    /**
+     * Collide with border point.
+     *
+     * @return the point
+     */
+    public Point collideWithBorder() {
+        if (currentVelocity.applyToPoint(rectangle.getUpperLeft()).getX() + rectangle.getWidth() >= GameLevel.WINDOW_WIDTH - GameLevel.THICKNESS - 1) {
+            return new Point(GameLevel.WINDOW_WIDTH - 1 - GameLevel.THICKNESS - rectangle.getWidth(),
+                    rectangle.getUpperLeft().getY());
+        } else if (currentVelocity.applyToPoint(rectangle.getUpperLeft()).getX() <= GameLevel.THICKNESS + 1) {
+            return new Point(GameLevel.THICKNESS + 1, rectangle.getUpperLeft().getY());
+        }
+        return null;
     }
 
 
@@ -198,7 +169,7 @@ public class Paddle implements Sprite, Collidable {
     }
 
     @Override
-    public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
+    public Velocity hit(Ball hitter, Velocity currentVelocity, Point collisionPoint) {
         double space = rectangle.getWidth() / 5;
 
         if (collisionPoint.distance(rectangle.getUpperLeft()) < space) {
@@ -225,10 +196,18 @@ public class Paddle implements Sprite, Collidable {
      *
      * @param g the g
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addCollidable(this);
         g.addSprite(this);
     }
 
 
+    /**
+     * Sets location.
+     *
+     * @param paddleStartingPoint the paddle starting point
+     */
+    public void setUpperLeft(Point paddleStartingPoint) {
+        rectangle.setUpperLeft(paddleStartingPoint);
+    }
 }

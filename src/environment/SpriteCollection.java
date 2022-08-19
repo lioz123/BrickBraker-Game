@@ -12,11 +12,12 @@ import java.util.List;
  * @author Lioz Dayan. ID:315155234. The type Enteties.Ball.
  */
 public class SpriteCollection {
-    private final List<Sprite> sprites = new ArrayList<>();
+    private List<Sprite> sprites = new ArrayList<>();
 
     /**
      * Add sprite.
-     *a
+     * a
+     *
      * @param s the s
      */
     public void addSprite(Sprite s) {
@@ -36,13 +37,30 @@ public class SpriteCollection {
     /**
      * Draw all on.
      * call drawOn(d) on all sprites.
+     *
      * @param d the d
      */
     public void drawAllOn(DrawSurface d) {
+        ArrayList<Sprite> sprites = new ArrayList<>(this.sprites);
         for (Sprite sprite : sprites) {
+
             sprite.drawOn(d);
         }
     }
 
+    /**
+     * Remove sprite.
+     *
+     * @param s the sprite to remove.
+     */
+    public void removeSprite(Sprite s) {
+        sprites.remove(s);
+    }
 
+    /**
+     * Clear.
+     */
+    public void clear() {
+        this.sprites = new ArrayList<>();
+    }
 }

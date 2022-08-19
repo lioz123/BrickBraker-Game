@@ -156,4 +156,22 @@ public class Rectangle {
     public double getHeight() {
         return height;
     }
+
+    /**
+     * Gets color.
+     *
+     * @return the color
+     */
+    public Color getColor() {
+        return this.color;
+    }
+
+    /**
+     * Sets color.
+     *
+     * @param color the color
+     */
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }

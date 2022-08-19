@@ -1,4 +1,4 @@
-package Enteties;
+package entities;
 
 import biuoop.DrawSurface;
 import environment.GameEnvironment;
@@ -20,8 +20,6 @@ public class Ball implements Sprite {
      * The Game environment.
      */
     private GameEnvironment gameEnvironment;
-
-
     private Point center;
     private final int radius;
     private final Color color;
@@ -95,7 +93,7 @@ public class Ball implements Sprite {
 
         if (info != null) {
             Velocity formerVelocity = velocity;
-            setVelocity(info.collisionObject().hit(info.collisionPoint(), velocity));
+            setVelocity(info.collisionObject().hit(this, velocity, info.collisionPoint()));
             setCenter(velocity.applyToPoint(info.collisionPoint()));
             protectFromColission(info, formerVelocity);
             return;
@@ -215,5 +213,6 @@ public class Ball implements Sprite {
     public Point getCenter() {
         return this.center;
     }
+
 
 }

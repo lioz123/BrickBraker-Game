@@ -1,6 +1,7 @@
 package interfaces;
 
 
+import entities.Ball;
 import helpers.Point;
 import helpers.Rectangle;
 import helpers.Velocity;
@@ -24,11 +25,13 @@ public interface Collidable {
      * a given velocity.
      * The return is the new velocity expected after the hit (based on
      * the force the object inflicted on us).
-     * @param collisionPoint  the collision point
+     *
+     * @param hitter
      * @param currentVelocity the current velocity
+     * @param collisionPoint  the collision point
      * @return the velocity
      */
-    Velocity hit(Point collisionPoint, Velocity currentVelocity);
+    Velocity hit(Ball hitter, Velocity currentVelocity, Point collisionPoint);
 
 
 }
